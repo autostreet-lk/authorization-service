@@ -1,0 +1,36 @@
+version: '3.5'
+
+services:
+  mysql-docker-container:
+    image: mysql:5.7
+    container_name: mysql-docker-container
+    environment:
+      - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_DATABASE=autostreet_lk_security_db
+      - MYSQL_USER=app_user
+      - MYSQL_PASSWORD=test123
+    ports:
+      - 3307:3306
+    volumes:
+      - /data/mysql
+    networks:
+      - autostreet_shared
+
+  authorization-service:
+    image: authorization-service:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql-docker-container
+    ports:
+      - 8082:8082
+    volumes:
+      - /data/app
+    networks:
+      - autostreet_shared
+
+networks:
+  autostreet_shared:
+    external: true
+    name: autostreet_shared
