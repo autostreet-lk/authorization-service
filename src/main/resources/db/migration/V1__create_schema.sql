@@ -69,3 +69,41 @@ create table ClientDetails (
   additionalInformation VARCHAR(4096),
   autoApproveScopes VARCHAR(255)
 );
+
+
+
+CREATE TABLE if not exists `hibernate_sequence` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE if not exists `users` (
+  `id` bigint(20) NOT NULL,
+  `username` varchar(255) NOT NULL UNIQUE,
+  `password` varchar(255) NOT NULL,
+  `company_id` bigint(20) NOT NULL,
+  `user_type` varchar(30) NOT NULL,
+  `created_by_id` bigint(20) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `last_modified_by_id` bigint(20) DEFAULT NULL,
+  `last_modified_date` datetime DEFAULT NULL,
+  `status` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE if not exists `roles` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) NOT NULL UNIQUE,
+  `created_by_id` bigint(20) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `last_modified_by_id` bigint(20) DEFAULT NULL,
+  `last_modified_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE if not exists `user_roles` (
+  `user_id` bigint(20) NOT NULL,
+  `role_id` bigint(20) NOT NULL,
+  KEY (`role_id`),
+  KEY (`user_id`)
+);

@@ -26,10 +26,12 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Qualifier("authenticationManager")
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private DataSource dataSource;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.jdbc(dataSource());
+        clients.jdbc(dataSource);
     }
 
 
@@ -43,18 +45,18 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Bean
     public JdbcTokenStore tokenStore() {
-        return new JdbcTokenStore(dataSource());
+        return new JdbcTokenStore(dataSource);
     }
 
 
-    @ConfigurationProperties(prefix = "spring.datasource")
-    @Bean
-    @Primary
-    public DataSource dataSource() {
-        return DataSourceBuilder
-                .create()
-                .build();
-    }
+//    @ConfigurationProperties(prefix = "spring.datasource")
+//    @Bean
+//    @Primary
+//    public DataSource dataSource() {
+//        return DataSourceBuilder
+//                .create()
+//                .build();
+//    }
 
 
     @Override
