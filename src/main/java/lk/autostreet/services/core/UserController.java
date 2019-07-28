@@ -24,7 +24,7 @@ public class UserController {
         user.setUsername("chathuranga");
         user.setPassword("123456");
         user.setSeller(1L);
-        user.setUserType(UserType.SYSTEM_ADMIN);
+        user.setUserType(UserType.ADMIN);
         return userService.create(user);
     }
 

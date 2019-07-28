@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AccessRole {
 
-    public static final String ROLE_COMPANY_USER = "ROLE_COMPANY_USER";
-    public static final String ROLE_COMPANY_ADMIN = "ROLE_COMPANY_ADMIN";
-    public static final String ROLE_SYSTEM_ADMIN = "ROLE_SYSTEM_ADMIN";
+    public static final String ROLE_SELLER_AGENT = "ROLE_SELLER_AGENT";
+    public static final String ROLE_SELLER = "ROLE_SELLER";
+    public static final String ROLE_ADMIN = "ROLE_ADMIN";
 }

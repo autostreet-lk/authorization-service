@@ -66,15 +66,15 @@ public class RoleServiceImpl implements RoleService {
 
         List<String> roleNames = new ArrayList<>();
 
-        if (userType.equals(UserType.SYSTEM_ADMIN)) {
-            roleNames.add(AccessRole.ROLE_SYSTEM_ADMIN);
-            roleNames.add(AccessRole.ROLE_COMPANY_ADMIN);
-            roleNames.add(AccessRole.ROLE_COMPANY_USER);
-        } else if (userType.equals(UserType.COMPANY_ADMIN)) {
-            roleNames.add(AccessRole.ROLE_COMPANY_ADMIN);
-            roleNames.add(AccessRole.ROLE_COMPANY_USER);
-        } else if (userType.equals(UserType.COMPANY_USER)) {
-            roleNames.add(AccessRole.ROLE_COMPANY_USER);
+        if (userType.equals(UserType.ADMIN)) {
+            roleNames.add(AccessRole.ROLE_ADMIN);
+            roleNames.add(AccessRole.ROLE_SELLER);
+            roleNames.add(AccessRole.ROLE_SELLER_AGENT);
+        } else if (userType.equals(UserType.SELLER)) {
+            roleNames.add(AccessRole.ROLE_SELLER);
+            roleNames.add(AccessRole.ROLE_SELLER_AGENT);
+        } else if (userType.equals(UserType.SELLER_AGENT)) {
+            roleNames.add(AccessRole.ROLE_SELLER_AGENT);
         }
 
         if (roleNames.isEmpty()) {
