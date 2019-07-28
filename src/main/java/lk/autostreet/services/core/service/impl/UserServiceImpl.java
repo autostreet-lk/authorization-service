@@ -23,13 +23,11 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private RoleService roleService;
     private PasswordEncoder passwordEncoder;
-//    private TokenService tokenService;
 
     public UserServiceImpl(UserRepository userRepository, RoleService roleService, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleService = roleService;
         this.passwordEncoder = passwordEncoder;
-//        this.tokenService = tokenService;
     }
 
 
@@ -66,12 +64,12 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             log.debug(" user is not set ");
             throw new UserNotCreatedException("User is not set");
-        } else if (user.getCompany() == null) {
-            log.debug(" company is not set ");
-            throw new UserNotCreatedException("Company is not set");
+        } else if (user.getSeller() == null) {
+            log.debug(" seller is not set ");
+            throw new UserNotCreatedException("Seller is not set");
         } else if (user.getUserType() == null) {
             log.debug(" user type is not set ");
-            throw new UserNotCreatedException("user type is not set");
+            throw new UserNotCreatedException("User type is not set");
         }
     }
 
@@ -88,16 +86,4 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = findByUsername(username);
         return userOptional.orElseThrow(() -> new UserNotFoundException("No user found with username [" + username + "] "));
     }
-
-//    @Override
-//    public String generateToken(String username) throws TokenNotCreatedException {
-//        return tokenService.generateToken(username);
-//    }
-//
-//    @Override
-//    public User findUserByToken(String token) throws InvalidTokenException, UserNotFoundException {
-//        String username = tokenService.getUsernameFromToken(token);
-//        Optional<User> userOptional = this.findByUsername(username);
-//        return userOptional.orElseThrow(() -> new UserNotFoundException("No user found for the token"));
-//    }
 }

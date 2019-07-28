@@ -1,4 +1,4 @@
-package lk.autostreet.services.core;
+package lk.autostreet.services.core.service;
 
 import lk.autostreet.services.core.model.User;
 import lk.autostreet.services.core.service.UserService;

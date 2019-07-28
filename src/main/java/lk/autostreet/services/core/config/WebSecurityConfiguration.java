@@ -1,6 +1,7 @@
 package lk.autostreet.services.core.config;
 
-import lk.autostreet.services.core.AppUserDetailsService;
+import lk.autostreet.services.core.service.AppUserDetailsService;
+import lk.autostreet.services.core.RequestResponseLoggingFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @EnableWebSecurity
@@ -45,6 +47,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 //        //enable the cors filter
 //        http.cors();
+
+        //add the JWtTokenFilter to to the Spring Security Filter chain
+        http.addFilterBefore(new RequestResponseLoggingFilter(), UsernamePasswordAuthenticationFilter.class);
+//        http.addFilterBefore(new RequestResponseLoggingFilter(), BasicAuthenticationFilter.class);
 
         // No session will be created or used by spring security
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

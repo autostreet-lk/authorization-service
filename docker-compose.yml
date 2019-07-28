@@ -3,14 +3,13 @@ version: '3.5'
 services:
   mysql-docker-container:
     image: mysql:5.7
-    container_name: mysql-docker-container
     environment:
       - MYSQL_ROOT_PASSWORD=root123
       - MYSQL_DATABASE=autostreet_lk_security_db
       - MYSQL_USER=app_user
       - MYSQL_PASSWORD=test123
-    ports:
-      - 3307:3306
+#    ports:
+#      - 3307:3306
     volumes:
       - /data/mysql
     networks:

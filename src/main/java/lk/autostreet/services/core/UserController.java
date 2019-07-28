@@ -23,7 +23,7 @@ public class UserController {
         User user = new User();
         user.setUsername("chathuranga");
         user.setPassword("123456");
-        user.setCompany(1L);
+        user.setSeller(1L);
         user.setUserType(UserType.SYSTEM_ADMIN);
         return userService.create(user);
     }

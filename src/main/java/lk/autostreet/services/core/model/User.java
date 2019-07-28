@@ -15,8 +15,8 @@ public class User extends AbstractAuditable<User, Long> {
     private String username;
     private String password;
 
-    @Column(name = "company_id")
-    private Long company;
+    @Column(name = "seller_id")
+    private Long seller;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
